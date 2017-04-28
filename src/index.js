@@ -13,11 +13,8 @@ import routes from './routes/main.routes';
 
 app.use('/api/v1', routes);
 
+app.set('port', (process.env.PORT || 5000))
 // arrow functions
-const server = app.listen(3008, () => {
-	// destructuring
-  const {address, port} = server.address();
-
-  // string interpolation:
-  console.log(`Example app listening at http://${address}:${port}`);
-});
+app.listen(app.get('port'), () => {
+  console.log("Node app is running at localhost:" + app.get('port'))
+})

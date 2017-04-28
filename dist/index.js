@@ -28,15 +28,8 @@ _mongoose2.default.connect(db).then(function () {
 
 app.use('/api/v1', _main2.default);
 
+app.set('port', process.env.PORT || 5000);
 // arrow functions
-var server = app.listen(3008, function () {
-  // destructuring
-  var _server$address = server.address(),
-      address = _server$address.address,
-      port = _server$address.port;
-
-  // string interpolation:
-
-
-  console.log('Example app listening at http://' + address + ':' + port);
+app.listen(app.get('port'), function () {
+  console.log("Node app is running at localhost:" + app.get('port'));
 });
